@@ -1,0 +1,14 @@
+.cloud{
+    color: #e77c2f;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: purple;
+    text-underline-offset: 5px;
+}
+.notebook{
+    color: purple;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #e77c2f;
+    text-underline-offset: 5px;
+}

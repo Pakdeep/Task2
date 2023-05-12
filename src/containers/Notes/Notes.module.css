@@ -1,0 +1,9 @@
+.notes {
+    background-color: rgb(245, 239, 232);
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 10px;
+}

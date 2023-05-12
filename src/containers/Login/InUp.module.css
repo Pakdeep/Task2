@@ -1,0 +1,13 @@
+
+.InUp {
+    width: 100vw;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+.logo{
+    font-size: 40px;
+}

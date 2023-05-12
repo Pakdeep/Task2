@@ -1,0 +1,59 @@
+.note {
+    width: 25%;
+    height: 300px;
+    border: 2px solid #7c7474;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.title {
+    height: 15%;
+    width: 100%;
+    background-color: rgb(245, 176, 48);
+    padding: 0 10px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.desc {
+    height: 70%;
+    width: 100%;
+    padding: 0 10px;
+    padding-top: 5px;
+    background-color: white;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 9;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.icons {
+    height: 15%;
+    width: 100%;
+    align-self: flex-end;
+    display: flex;    
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(252, 221, 181);
+    padding: 0 10px;
+}
+
+.icons button {
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.icons button i {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    width: 40px;
+    height: 100%;
+
+}
