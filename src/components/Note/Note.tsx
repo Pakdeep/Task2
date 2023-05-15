@@ -1,20 +1,29 @@
 import React from 'react'
 import styles from "./Note.module.css"
-const Note = () => {
+interface noteProps {
+  note: {
+    title: string,
+    description: string
+  }
+}
+const Note = ({ note }: noteProps) => {
   return (
     <div className={styles.note}>
-      <div className={styles.title}>        
-        <h3>title</h3>{" "}       
+      <div className={styles.title}>
+        <h3>{note.title}</h3>{" "}
       </div>
       <h3 className={styles.desc}>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit consequuntur iure harum placeat soluta ipsum maxime, ullam consequatur minus dolor.      </h3>
+        {note.description}</h3>
       <div className={styles.icons}>
-        <button>
+        <button className={styles.hovertext} data-hover="Edit">
           <i className="fas fa-pencil-alt"></i>
+        </button >
+        <button className={styles.hovertext} data-hover="Sub Note">
+        <i className="fa-solid fa-plus"></i>
         </button>
-        <button>
+        <button className={styles.hovertext} data-hover="Delete">
           <i className="fas fa-trash-alt"></i>
-        </button>
+        </button> 
       </div>
     </div>
   )

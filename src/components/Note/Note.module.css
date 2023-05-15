@@ -3,8 +3,8 @@
     height: 300px;
     border: 2px solid #7c7474;
     border-radius: 10px;
-    overflow: hidden;
     margin: 10px 0;
+    overflow: hidden;
 }
 
 .title {
@@ -36,7 +36,7 @@
     height: 15%;
     width: 100%;
     align-self: flex-end;
-    display: flex;    
+    display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(252, 221, 181);
@@ -47,7 +47,37 @@
     border: none;
     cursor: pointer;
     background: none;
+    text-decoration: none;
+
 }
+
+.icons .hovertext {
+    position: relative;
+    border-bottom: 1px dotted black;
+}
+
+.icons .hovertext:before {
+    content:  attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 80px;
+    background-color: rgb(233, 159, 21);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    z-index: 1;
+    left: -30%;
+    top: -150%;
+}
+
+.icons .hovertext:hover:before {
+    opacity: 1;
+    visibility: visible;
+}
+
 
 .icons button i {
     display: flex;

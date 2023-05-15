@@ -1,8 +1,10 @@
 import React from 'react'
-
-const Name = () => {
+interface nameProps{
+  name:string
+}
+const Name = ({name}:nameProps) => {
   return (
-      <h3>Deepak Jaiswal</h3>
+      <h3>{name}</h3>
   )
 }
 

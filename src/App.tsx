@@ -5,7 +5,11 @@ import Login from './containers/Login';
 import SignUp from './containers/SignUp';
 import Home from './containers/Home';
 import Footer from './components/Footer';
+
+
 function App() {
+ 
+
   return (
     <div className="app">
       <BrowserRouter>
