@@ -6,3 +6,7 @@ export interface FetchNotes {
       }[]
   
   }
+  export interface NoteType{
+        title: string,
+        description: string
+  }
