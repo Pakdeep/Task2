@@ -1,14 +1,17 @@
-import firebase from 'firebase/compat/app'
-import 'firebase/firestore'
-import "firebase/auth";
+// import firebase from 'firebase/compat/app'
+import {initializeApp} from "firebase/app"
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+// import 'firebase/firestore'
+// import "firebase/auth";
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASES_TORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID
-
-};
-firebase.initializeApp(firebaseConfig);
-export default firebase;
+    apiKey: "AIzaSyBNhSiDtDUg6Y5q_-iSzxMNFmV2vKpqeY8",
+    authDomain: "cloudnotebook-96e11.firebaseapp.com",
+    projectId: "cloudnotebook-96e11",
+    storageBucket: "cloudnotebook-96e11.appspot.com",
+    messagingSenderId: "609687874442",
+    appId: "1:609687874442:web:6a2498d6b57b2973527673"
+  };
+export const app=initializeApp(firebaseConfig);
+export const auth=getAuth();
+export const db=getFirestore(); 

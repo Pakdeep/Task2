@@ -1,12 +1,19 @@
+const authReducer = (state = { user: {} }, action: any) => {
+  switch (action.type) {
+    case "SIGN_IN":
+      return {
+        ...state,
+        user:{...state.user,...action.payload}
+      };
+    case "SIGN_OUT":
+      return state;
+    case "SIGN_UP":
+      return {
+        ...state, user:{...state.user,...action.payload}
+      };
+    default:
+      return state;
+  }
+};
 
-
-const initState={
-    
-
-}
-
-const authReducer=(state=initState)=>{
-    return state;
-
-}
 export default authReducer;

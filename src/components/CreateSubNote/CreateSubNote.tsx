@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import styles from "./CreateNote.module.css"
+import styles from "../CreateNote/CreateNote.module.css"
 import Button from '../Button';
 import { useDispatch } from 'react-redux';
-interface noteProps {
-  heading: string,
-  text: string
-}
-const Createnote = ({ heading, text }: noteProps) => {
+import { useNavigate } from 'react-router-dom';
 
+const CreateSubnote = () => {
+const navigate=useNavigate();
   const dispatch = useDispatch();
   const [note, setNote] = useState({
     title: "",
@@ -18,12 +16,13 @@ const Createnote = ({ heading, text }: noteProps) => {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch({ type: "ADD_NOTE", payload: note });
+    dispatch({ type: "ADD_SUBNOTE", payload: note });
+    navigate("/")
   }
 
   return (
     <div className={styles.createNote}>
-      <h1>{heading}</h1>
+      <h1>Add a Sub Note</h1>
       <form action="" className={styles.formWrapper} onSubmit={handleSubmit}>
         <div className={styles.labelInput}>
           <label htmlFor="title">Title</label>
@@ -33,11 +32,11 @@ const Createnote = ({ heading, text }: noteProps) => {
           <label htmlFor="description">Description</label>
           <input type="text" name="description" id="description" onChange={handleChange} autoComplete='off' />
         </div>
-        <Button type="submit" text={text} styles={styles.button} />
+        <Button type="submit" text="Sub Note" styles={styles.button} />
       </form>
 
     </div>
   )
 }
 
-export default Createnote
+export default CreateSubnote

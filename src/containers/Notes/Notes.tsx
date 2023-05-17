@@ -5,16 +5,18 @@ import { useSelector } from 'react-redux'
 import { NoteType } from '../../State/noteTypes'
 
 const Notes = () => {
-  const notes= useSelector((state: any) => state.notes)
- console.log(notes.notes)
+  const x= useSelector((state: any) => state.notes)
+const notes=x.notes;
   return (
     <>
       <h1>Your Notes</h1>
       <div className={styles.notes}>
         {
-         notes.notes.map((note:NoteType, index: number) => {
-            return <Note note={note} key={index} />
-          })
+          notes.length!==0 ? (
+            notes.map((note:NoteType, index: number) => {
+               return <Note note={note} key={index} />
+             })
+          ): <h1>No notes</h1>
         }        
       </div></>
   )

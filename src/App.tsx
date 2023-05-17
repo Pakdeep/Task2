@@ -5,6 +5,7 @@ import Login from './containers/Login';
 import SignUp from './containers/SignUp';
 import Home from './containers/Home';
 import Footer from './components/Footer';
+import Subnote from './containers/Subnote';
 
 
 function App() {
@@ -14,11 +15,13 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />}>
+          <Route path='/' element={<Home />}>
           </Route>
-          <Route path="/signup" element={<SignUp/>}>
+          <Route path="login" element={<Login />}>
           </Route>
-          <Route path='/home' element={<Home />}>
+          <Route path="signup" element={<SignUp/>}>
+          </Route>
+          <Route path="subnote" element={<Subnote/>}>
           </Route>
         </Routes>
       </BrowserRouter>

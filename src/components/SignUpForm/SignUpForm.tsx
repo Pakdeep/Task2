@@ -1,22 +1,49 @@
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import React, { useState } from 'react'
 import styles from "./SignInUp.module.css"
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Button from '../Button';
+import { auth, db } from "../../Firebase/firebaseConfig"
+import { useDispatch } from "react-redux";
+
 
 const SignUpForm = () => {
+
+const dispatch=useDispatch();
+  const navigate = useNavigate();
+  const [err, setErr] = useState(false)
   const [details, setDetails] = useState({
-    name:"",
-    email:"",
-    password:""
+    name: "",
+    email: "",
+    password: ""
   })
-const handleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
-  setDetails({ ...details, [e.target.name]: e.target.value });
-}
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDetails({ ...details, [e.target.name]: e.target.value });
+  }
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(details.email, details.password, details.name)
+    let res: any;
+    try {
+      res = await createUserWithEmailAndPassword(auth, details.email, details.password)
+      await updateProfile(res.user, {
+        displayName: details.name,
+      })
+      dispatch({type:"SIGN_UP",payload:res.user})
+      navigate("/");
+
+      // await setDoc(doc(db, "users", res.user.uid), {
+      //   uid: res.user.uid,
+      //   displayName: res.user.displayName,
+      //   email: res.user.email
+      // });
+      // await setDoc(doc(db, "notes", res.user.uid), {});
+    } catch (err) {      
+      setErr(true)
+    }
 
   }
+
   return (
     <>
       <form action="" className={styles.formWrapper} onSubmit={submitHandler}>
@@ -34,7 +61,7 @@ const handleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
         </div>
         <Button type="submit" text="Sign Up" styles={styles.button} />
       </form>
-      <div><span>Already A User</span> <Link to="/" className={styles.link}> <span>Sign In</span></Link></div>
+      <div><span>Already A User</span> <Link to="/login" className={styles.link}> <span>Sign In</span></Link></div>
     </>
   )
 }

@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className={styles.home}>
       <Header/>
-      <CreateNote/>
+      <CreateNote heading='Add a Note' text="Add Note"/>
       <Notes/>
     </div>
   )

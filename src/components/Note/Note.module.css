@@ -1,6 +1,8 @@
 .note {
-    width: 25%;
-    height: 300px;
+    width: 30%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
     border: 2px solid #7c7474;
     border-radius: 10px;
     margin: 10px 0;
@@ -8,8 +10,8 @@
 }
 
 .title {
-    height: 15%;
     width: 100%;
+    height: 10%;
     background-color: rgb(245, 176, 48);
     padding: 0 10px;
     padding-right: 15px;
@@ -17,10 +19,24 @@
     justify-content: space-between;
     align-items: center;
 }
-
+.subnote{
+    height: 33%;
+    padding: 0 10px;
+    background-color: rgb(235, 176, 154);
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    gap: 5px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+.subnote::-webkit-scrollbar {
+    display: none;
+}
 .desc {
-    height: 70%;
     width: 100%;
+    height: 57%;
     padding: 0 10px;
     padding-top: 5px;
     background-color: white;
@@ -33,8 +49,8 @@
 }
 
 .icons {
-    height: 15%;
     width: 100%;
+    height: 10%;
     align-self: flex-end;
     display: flex;
     justify-content: space-between;
@@ -57,7 +73,7 @@
 }
 
 .icons .hovertext:before {
-    content:  attr(data-hover);
+    content: attr(data-hover);
     visibility: hidden;
     opacity: 0;
     width: 80px;

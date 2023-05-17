@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import styles from "../SignUpForm/SignInUp.module.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from '../Button';
-
+import {  signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../Firebase/firebaseConfig';
+import { useDispatch } from 'react-redux';
 
 
 const LoginForm = () => {
+const dispatch=useDispatch();
+  const navigate = useNavigate();
+  const [err, setErr] = useState(false)
   const [details, setDetails] = useState({
     email:"",
     password:""
@@ -14,9 +19,16 @@ const handleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
   setDetails({ ...details, [e.target.name]: e.target.value });
 }
 
-  const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
+  const handleSubmit= async(e:React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
-    console.log(details.email, details.password)
+    try{
+      const res=await signInWithEmailAndPassword(auth, details.email, details.password)
+      dispatch({type:"SIGN_IN",payload:res.user})
+      navigate("/")
+    }
+    catch(err){
+      setErr(true);
+    }
    }
 
   return (
