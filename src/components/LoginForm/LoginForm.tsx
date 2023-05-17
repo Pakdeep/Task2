@@ -5,6 +5,7 @@ import Button from '../Button';
 import {  signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../Firebase/firebaseConfig';
 import { useDispatch } from 'react-redux';
+import { SIGN_IN } from '../../State/actions';
 
 
 const LoginForm = () => {
@@ -23,7 +24,7 @@ const handleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
     e.preventDefault();
     try{
       const res=await signInWithEmailAndPassword(auth, details.email, details.password)
-      dispatch({type:"SIGN_IN",payload:res.user})
+      dispatch({type:SIGN_IN,payload:res.user})
       navigate("/")
     }
     catch(err){

@@ -1,11 +1,11 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
 import React, { useState } from 'react'
 import styles from "./SignInUp.module.css"
 import { useNavigate, Link } from "react-router-dom";
 import Button from '../Button';
-import { auth, db } from "../../Firebase/firebaseConfig"
+import { auth } from "../../Firebase/firebaseConfig"
 import { useDispatch } from "react-redux";
+import { SIGN_UP } from "../../State/actions";
 
 
 const SignUpForm = () => {
@@ -29,15 +29,8 @@ const dispatch=useDispatch();
       await updateProfile(res.user, {
         displayName: details.name,
       })
-      dispatch({type:"SIGN_UP",payload:res.user})
-      navigate("/");
-
-      // await setDoc(doc(db, "users", res.user.uid), {
-      //   uid: res.user.uid,
-      //   displayName: res.user.displayName,
-      //   email: res.user.email
-      // });
-      // await setDoc(doc(db, "notes", res.user.uid), {});
+      dispatch({type:SIGN_UP,payload:res.user})
+      navigate("/");      
     } catch (err) {      
       setErr(true)
     }

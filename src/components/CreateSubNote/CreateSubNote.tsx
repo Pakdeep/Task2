@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from "../CreateNote/CreateNote.module.css"
+import styles from "./CreateSubNote.module.css"
 import Button from '../Button';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ const navigate=useNavigate();
   }
 
   return (
-    <div className={styles.createNote}>
+    <div className={styles.createSubNote}>
       <h1>Add a Sub Note</h1>
       <form action="" className={styles.formWrapper} onSubmit={handleSubmit}>
         <div className={styles.labelInput}>
@@ -34,8 +34,8 @@ const navigate=useNavigate();
         </div>
         <Button type="submit" text="Sub Note" styles={styles.button} />
       </form>
-
     </div>
+
   )
 }
 
