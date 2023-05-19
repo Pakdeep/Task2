@@ -5,14 +5,13 @@ import { useNavigate, Link } from "react-router-dom";
 import Button from '../Button';
 import { auth } from "../../Firebase/firebaseConfig"
 import { useDispatch } from "react-redux";
-import { SIGN_UP } from "../../State/actions";
+import { SIGN_UP,SIGNUP_ERROR } from "../../State/actions";
 
 
 const SignUpForm = () => {
 
 const dispatch=useDispatch();
   const navigate = useNavigate();
-  const [err, setErr] = useState(false)
   const [details, setDetails] = useState({
     name: "",
     email: "",
@@ -32,9 +31,8 @@ const dispatch=useDispatch();
       dispatch({type:SIGN_UP,payload:res.user})
       navigate("/");      
     } catch (err) {      
-      setErr(true)
+      dispatch({type:SIGNUP_ERROR})
     }
-
   }
 
   return (

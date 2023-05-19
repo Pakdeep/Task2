@@ -5,13 +5,12 @@ import Button from '../Button';
 import {  signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../Firebase/firebaseConfig';
 import { useDispatch } from 'react-redux';
-import { SIGN_IN } from '../../State/actions';
+import { SIGN_IN,SIGNIN_ERROR } from '../../State/actions';
 
 
 const LoginForm = () => {
 const dispatch=useDispatch();
   const navigate = useNavigate();
-  const [err, setErr] = useState(false)
   const [details, setDetails] = useState({
     email:"",
     password:""
@@ -28,7 +27,7 @@ const handleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
       navigate("/")
     }
     catch(err){
-      setErr(true);
+      dispatch({type:SIGNIN_ERROR})
     }
    }
 
@@ -44,7 +43,7 @@ const handleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
         </div>
         <Button type="submit" text={"Sign In"} styles={styles.button} />
       </form>
-      <div><span>New User</span> <Link to="/signup" className={styles.link}> <span>Sign In</span></Link></div>
+      <div><span>New User</span> <Link to="/signup" className={styles.link}> <span>Sign Up</span></Link></div>
     </>
   )
 }

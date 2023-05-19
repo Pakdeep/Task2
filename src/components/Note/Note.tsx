@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from "./Note.module.css"
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Subnote from '../Subnote'
 import { NoteType } from '../../State/noteTypes'
+import { UPDATE_NOTE } from '../../State/actions'
 interface noteProps {
   note: {
     title: string,
@@ -11,6 +12,7 @@ interface noteProps {
   }
 }
 const Note = ({ note }: noteProps) => {
+  const dispatch = useDispatch();
   const x = useSelector((state: any) => state.notes)
   const subnotes = x.subNotes;
   return (
@@ -25,19 +27,22 @@ const Note = ({ note }: noteProps) => {
           subnotes.map((note: NoteType, index: number) => {
             return <Subnote key={index} title={note.title} />
           })
-        ):<h2>No Sub Note</h2>
-          }
+        ) : <h4>No Sub Note</h4>
+        }
         {/* <Subnote title="deepak"/> */}
       </div>
       <div className={styles.icons}>
-        <button className={styles.hovertext} data-hover="Edit">
+        <button className={styles.hovertext} data-hover="Edit" onClick={() => {
+          dispatch({ type: UPDATE_NOTE })
+        }}>
           <i className="fas fa-pencil-alt"></i>
         </button >
         <Link to="/subnote"><button className={styles.hovertext} data-hover="Sub Note">
           <i className="fa-solid fa-plus"></i>
         </button>
         </Link>
-        <button className={styles.hovertext} data-hover="Delete">
+        <button className={styles.hovertext} data-hover="Delete" onClick={() => dispatch({ type: UPDATE_NOTE })}
+        >
           <i className="fas fa-trash-alt"></i>
         </button>
       </div>

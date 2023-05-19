@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Name from '../../components/Name/Name'
 import Button from '../../components/Button'
 import styles from "./Header.module.css"
@@ -12,15 +12,27 @@ import { SIGN_OUT } from '../../State/actions'
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const x = useSelector((state: any) => state.auth)
+  let  x = useSelector((state: any) => state.auth)
+   const [name,setName]=useState("")
+   const [id,setId]=useState("")
   const currentUser = x.user;
+  console.log(currentUser)
+  useEffect(()=>{
+    setName(currentUser.displayName);
+    setId(currentUser.email);
+  },[])
   return (
     <div className={styles.header}>
-      <Id id={currentUser.email} />
+      <Id id={id} />
       <Logo style={styles.logo} />
       <div className={styles.right}>
-        <Name name={currentUser.displayName} />
-        <Button text={"Log Out"} styles={styles.button} onClick={() => { signOut(auth); dispatch({ type: SIGN_OUT }); navigate("/login") }} />
+        <Name name={name} />
+        <Button text={"Log Out"} styles={styles.button} 
+        onClick={() => {
+          signOut(auth);
+          dispatch({ type: SIGN_OUT });
+          navigate("/login")
+        }} />
       </div>
     </div>
   )
