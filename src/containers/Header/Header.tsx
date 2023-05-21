@@ -16,10 +16,10 @@ const Header = () => {
    const [name,setName]=useState("")
    const [id,setId]=useState("")
   const currentUser = x.user;
-  console.log(currentUser)
   useEffect(()=>{
     setName(currentUser.displayName);
     setId(currentUser.email);
+    // eslint-disable-next-line
   },[])
   return (
     <div className={styles.header}>

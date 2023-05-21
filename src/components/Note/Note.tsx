@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Subnote from '../Subnote'
 import { NoteType } from '../../State/noteTypes'
-import { UPDATE_NOTE } from '../../State/actions'
+import { REMOVE_NOTE, UPDATE_NOTE } from '../../State/actions'
 interface noteProps {
   note: {
+    
     title: string,
     description: string
   }
@@ -25,7 +26,7 @@ const Note = ({ note }: noteProps) => {
       <div className={styles.subnote}>
         {subnotes.length !== 0 ? (
           subnotes.map((note: NoteType, index: number) => {
-            return <Subnote key={index} title={note.title} />
+            return <Subnote key={index} title={note.title} id={index}/>
           })
         ) : <h4>No Sub Note</h4>
         }
@@ -41,7 +42,7 @@ const Note = ({ note }: noteProps) => {
           <i className="fa-solid fa-plus"></i>
         </button>
         </Link>
-        <button className={styles.hovertext} data-hover="Delete" onClick={() => dispatch({ type: UPDATE_NOTE })}
+        <button className={styles.hovertext} data-hover="Delete" onClick={() =>{dispatch({ type: REMOVE_NOTE })}}
         >
           <i className="fas fa-trash-alt"></i>
         </button>

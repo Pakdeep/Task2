@@ -2,44 +2,7 @@ import { FetchNotes } from "../noteTypes";
 import { toast } from "react-toastify";
 
 const initState: FetchNotes = {
-  notes: [
-    {
-      title: "Note1",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus ex quisquam eligendi esse eveniet accusamus nemo provident hic aspernatur consequatur totam nostrum? Aspernatur nemo officiis unde quisquam inventore?",
-      
-    },     {
-      title: "Note1",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus ex quisquam eligendi esse eveniet accusamus nemo provident hic aspernatur consequatur totam nostrum? Aspernatur nemo officiis unde quisquam inventore?",
-      
-    },     {
-      title: "Note1",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus ex quisquam eligendi esse eveniet accusamus nemo provident hic aspernatur consequatur totam nostrum? Aspernatur nemo officiis unde quisquam inventore?",
-      
-    },     {
-      title: "Note1",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus ex quisquam eligendi esse eveniet accusamus nemo provident hic aspernatur consequatur totam nostrum? Aspernatur nemo officiis unde quisquam inventore?",
-      
-    },     {
-      title: "Note1",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus ex quisquam eligendi esse eveniet accusamus nemo provident hic aspernatur consequatur totam nostrum? Aspernatur nemo officiis unde quisquam inventore?",
-      
-    },     {
-      title: "Note1",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus ex quisquam eligendi esse eveniet accusamus nemo provident hic aspernatur consequatur totam nostrum? Aspernatur nemo officiis unde quisquam inventore?",
-      
-    },     {
-      title: "Note1",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus ex quisquam eligendi esse eveniet accusamus nemo provident hic aspernatur consequatur totam nostrum? Aspernatur nemo officiis unde quisquam inventore?",
-      
-    },     {
-      title: "Note1",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus ex quisquam eligendi esse eveniet accusamus nemo provident hic aspernatur consequatur totam nostrum? Aspernatur nemo officiis unde quisquam inventore?",
-      
-    },     {
-      title: "Note1",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus exLorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, officia minus ex quisquam eligendi esse eveniet accusamus nemo provident hic aspernatur consequatur totam nostrum? Aspernatur nemo officiis unde quisquam inventore?",
-      
-    },     
+  notes: [ 
   ],
   subNotes: [    
   ]
@@ -48,8 +11,7 @@ const initState: FetchNotes = {
 const noteReducer = (state = initState, action: any) => {
   switch (action.type) {
     case "ADD_NOTE":
-      toast.success("Note Added Successfully..") ;
-      
+      toast.success("Note Added Successfully..") ;      
       return { ...state, notes: [...state.notes, action.payload] };
     
     case "ADD_SUBNOTE": 

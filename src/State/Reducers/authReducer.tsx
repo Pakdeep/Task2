@@ -6,7 +6,7 @@ const authReducer = (state = { user: {} }, action: any) => {
       toast.success("Welcome back.. " + action.payload.displayName);
       return {
         ...state,
-        user: { ...state.user, ...action.payload }
+        user:action.payload
       };
     case SIGNUP_ERROR:
       toast.error("Sign up error...");
@@ -15,7 +15,7 @@ const authReducer = (state = { user: {} }, action: any) => {
     case SIGN_UP:
       toast.success("Welcome.. "+ action.payload.displayName);
       return {
-        ...state, user: { ...state.user, ...action.payload }
+        ...state, user:action.payload 
       };
     case SIGNIN_ERROR:
       toast.error("Wrong Credentials");

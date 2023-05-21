@@ -1,3 +1,4 @@
+import "react-toastify/dist/ReactToastify.css"
 import React from 'react';
 import "./app.css"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -7,10 +8,8 @@ import Home from './containers/Home';
 import Footer from './components/Footer';
 import Subnote from './containers/Subnote';
 import { ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css"
 
 function App() {
-
 
   return (
     <div className="app">
