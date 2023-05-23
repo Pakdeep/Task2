@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "./Note.module.css"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,16 +6,13 @@ import Subnote from '../Subnote'
 import { NoteType } from '../../State/noteTypes'
 import { REMOVE_NOTE, UPDATE_NOTE } from '../../State/actions'
 interface noteProps {
-  note: {
-    
-    title: string,
-    description: string
-  }
+  note:NoteType
 }
-const Note = ({ note }: noteProps) => {
+const Note = ({ note }: noteProps) => {  
   const dispatch = useDispatch();
   const x = useSelector((state: any) => state.notes)
   const subnotes = x.subNotes;
+
   return (
     <div className={styles.note}>
       <div className={styles.title}>
@@ -42,7 +39,8 @@ const Note = ({ note }: noteProps) => {
           <i className="fa-solid fa-plus"></i>
         </button>
         </Link>
-        <button className={styles.hovertext} data-hover="Delete" onClick={() =>{dispatch({ type: REMOVE_NOTE })}}
+        <button className={styles.hovertext} data-hover="Delete" onClick={() =>{
+          dispatch({ type: REMOVE_NOTE,payload:note.title})}}
         >
           <i className="fas fa-trash-alt"></i>
         </button>

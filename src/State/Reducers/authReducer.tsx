@@ -1,4 +1,4 @@
-import { SIGNIN_ERROR, SIGNUP_ERROR, SIGN_IN, SIGN_OUT, SIGN_UP } from "../actions";
+import { GET_USER, NO_USER, SIGNIN_ERROR, SIGNUP_ERROR, SIGN_IN, SIGN_OUT, SIGN_UP } from "../actions";
 import { toast } from "react-toastify";
 const authReducer = (state = { user: {} }, action: any) => {
   switch (action.type) {
@@ -8,6 +8,15 @@ const authReducer = (state = { user: {} }, action: any) => {
         ...state,
         user:action.payload
       };
+       case GET_USER:
+      return {
+        ...state,
+        user:action.payload
+      };  
+       case NO_USER:
+      toast.error("Non user found...");
+      return state
+      
     case SIGNUP_ERROR:
       toast.error("Sign up error...");
       return state;

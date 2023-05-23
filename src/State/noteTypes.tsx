@@ -1,15 +1,5 @@
-// export interface FetchNotes {
-//     notes: 
-//       {
-//         title: string,
-//         description: string,
-//         subNotes:{
-//         title: string,
-//         description: string
-//       }[]
-//       }[],  
-//   }
-  export interface FetchNotes {
+
+  export interface FetchNotes{ 
     notes: 
       {
         title: string,
@@ -21,7 +11,6 @@
       }[]
   }
   export interface NoteType{
-    
         title: string,
         description: string
   }

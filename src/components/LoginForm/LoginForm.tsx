@@ -4,15 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from '../Button';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from '../../Firebase/firebaseConfig';
-import { useDispatch } from 'react-redux';
-import { SIGN_IN, SIGNIN_ERROR } from '../../State/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { FETCH_NOTES, NO_USER, SIGN_IN, SIGNIN_ERROR } from '../../State/actions';
 import { doc, getDoc } from "firebase/firestore";
-import { collection, DocumentData, onSnapshot, QuerySnapshot } from "firebase/firestore";
 
 const LoginForm = () => {
+  // const x = useSelector((state: any) => state.auth)
+  // const user = x.user;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [data,setData]=useState();
   const [details, setDetails] = useState({
     email: "",
     password: ""
@@ -20,28 +20,45 @@ const LoginForm = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDetails({ ...details, [e.target.name]: e.target.value });
   }
-  
-//   useEffect(
-//     const docRef = doc(db, "cities", "SF");
-// const docSnap = await getDoc(docRef);
-
-// if (docSnap.exists()) {
-//   console.log("Document data:", docSnap.data());
-// } else {
-//   // docSnap.data() will be undefined in this case
-//   console.log("No such document!");
-// }
-//   );
-
+  // useEffect(()=>{
+  //   const docRef = doc(db, "users", user.uid);
+  //   const getNotes=async()=>{
+  //     const docSnap = await getDoc(docRef);
+  //     if (docSnap.exists()) {
+  //       const y = docSnap.data();
+  //       const notes = (y.notes).notes;
+  //       console.log(y)
+  //       notes.map((note: any) => {
+  //         return (dispatch({ type: FETCH_NOTES, payload: note }))
+  //       })
+  //     } else {
+  //       console.log("No such document!");
+  //     }
+  //   }
+  // },[])
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const res = await signInWithEmailAndPassword(auth, details.email, details.password)
-      dispatch({ type: SIGN_IN, payload: res.user })    
-      navigate("/")
-    }
-    catch (err) {
-      dispatch({ type: SIGNIN_ERROR })
+      let user = res.user;
+      dispatch({ type: SIGN_IN, payload: user });
+      // const docRef = doc(db, "users", user.uid);
+      // const getNotes=async()=>{
+      //   const docSnap = await getDoc(docRef);
+      //   if (docSnap.exists()) {
+      //     const y = docSnap.data();
+      //     const notes = (y.notes).notes;
+      //     console.log(y)
+      //     notes.map((note: any) => {
+      //       return (dispatch({ type: FETCH_NOTES, payload: note }))
+      //     })
+      //   } else {
+      //     console.log("No such document!");
+      //   }
+      // // }
+      navigate("/");
+    } catch (err: any) {
+      err.code === "auth/user-not-found" ? dispatch({ type: NO_USER }) : dispatch({ type: SIGNIN_ERROR })
     }
   }
 

@@ -7,3 +7,6 @@ export const ADD_NOTE = 'ADD_NOTE';
 export const REMOVE_NOTE = 'DELETE_NOTE';
 export const UPDATE_NOTE = 'UPDATE_NOTE';
 export const ADD_SUBNOTE = 'ADD_SUBNOTE';
+export const GET_USER = 'GET_USER';
+export const FETCH_NOTES = 'FETCH_NOTES';
+export const NO_USER = 'NO_USER';

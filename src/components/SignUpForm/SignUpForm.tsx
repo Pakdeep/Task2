@@ -8,12 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { SIGN_UP,SIGNUP_ERROR } from "../../State/actions";
 import { doc, setDoc } from "firebase/firestore";
 
-
 const SignUpForm = () => {
 
 
 const notes=useSelector((state:any)=>state.notes)
-// console.log(notes)
 const dispatch=useDispatch();
   const navigate = useNavigate();
   const [details, setDetails] = useState({
@@ -32,12 +30,10 @@ const dispatch=useDispatch();
       await updateProfile(res.user, {
         displayName: details.name,
       })
-      await setDoc(doc(db, "users", res.user.uid), {
-        uid: res.user.uid,
+      await setDoc(doc(db, "notes", res.user.uid), {
         name:res.user.displayName,
         notes:notes
-
-      });      
+      });       
       dispatch({type:SIGN_UP,payload:res.user})
       navigate("/");      
     } catch (err) {   

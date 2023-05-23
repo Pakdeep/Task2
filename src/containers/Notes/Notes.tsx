@@ -1,29 +1,34 @@
 import React, { useEffect } from 'react'
 import Note from '../../components/Note'
 import styles from "./Notes.module.css"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NoteType } from '../../State/noteTypes'
-// import { doc, getDoc } from "firebase/firestore";
-// import { db } from '../../Firebase/firebaseConfig'
+import { doc, getDoc } from 'firebase/firestore'
+import { db } from '../../Firebase/firebaseConfig'
+import { FETCH_NOTES } from '../../State/actions'
 
 const Notes = () => {
   const x = useSelector((state: any) => state.notes)
   const notes = x.notes;
-  // const y=useSelector((state: any) => state.auth)
-  // const currentUser=y.user;
-  // const docRef = doc(db, "users", currentUser.uid);
-  // useEffect(()=>{
-  //   const getNotes=async()=>{
-  //   const docSnap = await getDoc(docRef);
-
-  //   if (docSnap.exists()) {
-  //     console.log("Document data:", docSnap.data());
-  //   } else {
-  //     // docSnap.data() will be undefined in this case
-  //     console.log("No such document!");
-  //   }
-  // }
-  // },[])
+  const dispatch=useDispatch();
+  const y=useSelector((state: any) => state.auth)
+  const user=y.user;
+// useEffect(()=>{
+//   const getNotes=async()=>{
+//       const docSnap = await getDoc(doc(db, "users", user.uid));
+//       console.log(user.displayName)
+//       if (docSnap.exists()) {
+//         const y = docSnap.data();
+//         const notes = (y.notes).notes;
+//         console.log(y)
+//         notes.map((note: any) => {
+//           return (dispatch({ type: FETCH_NOTES, payload: note }))
+//         })
+//       } else {
+//         console.log("No such document!");
+//       }
+//     }
+// })
   return (
     <>
       <h1>Your Notes</h1>
@@ -31,7 +36,7 @@ const Notes = () => {
         {
           notes.length !== 0 ? (
             notes.map((note: NoteType, index: number) => {
-              return <Note note={note} key={index} />
+              return <Note note={note} key={index}  />
             })
           ) : <h1>No notes</h1>
         }
