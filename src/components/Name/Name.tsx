@@ -4,7 +4,7 @@ interface nameProps{
 }
 const Name = ({name}:nameProps) => {
   return (
-      <h3>{name}</h3>
+      <h4>{name}</h4>
   )
 }
 

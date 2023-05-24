@@ -8,6 +8,7 @@ import Home from './containers/Home';
 import Footer from './components/Footer';
 import Subnote from './containers/Subnote';
 import { ToastContainer } from 'react-toastify';
+import ShowSubnote from "./containers/ShowSubnote/ShowSubnote";
 
 function App() {
 
@@ -31,7 +32,9 @@ function App() {
           </Route>
           <Route path="signup" element={<SignUp />}>
           </Route>
-          <Route path="subnote" element={<Subnote />}>
+          <Route path="create/subnote" element={<Subnote />}>
+          </Route> 
+          <Route path="subnote" element={<ShowSubnote />}>
           </Route>
         </Routes>
       </BrowserRouter>

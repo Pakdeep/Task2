@@ -5,7 +5,7 @@ interface idProps{
 }
 const Id = ({id}:idProps) => {
   return (
-    <div className={style.id}><h3>{id}</h3></div>
+    <div className={style.id}><h4>{id}</h4></div>
   )
 }
 

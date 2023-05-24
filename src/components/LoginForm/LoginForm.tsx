@@ -42,20 +42,18 @@ const LoginForm = () => {
       const res = await signInWithEmailAndPassword(auth, details.email, details.password)
       let user = res.user;
       dispatch({ type: SIGN_IN, payload: user });
-      // const docRef = doc(db, "users", user.uid);
-      // const getNotes=async()=>{
-      //   const docSnap = await getDoc(docRef);
-      //   if (docSnap.exists()) {
-      //     const y = docSnap.data();
-      //     const notes = (y.notes).notes;
-      //     console.log(y)
-      //     notes.map((note: any) => {
-      //       return (dispatch({ type: FETCH_NOTES, payload: note }))
-      //     })
-      //   } else {
-      //     console.log("No such document!");
-      //   }
-      // // }
+      const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const y = docSnap.data();
+          const notes = y.notes;
+          notes.notes.map((note: any) => {
+            return (dispatch({ type: FETCH_NOTES, payload: note }))
+          })
+        } else {
+          console.log("No such document!");
+        }
+      // }
       navigate("/");
     } catch (err: any) {
       err.code === "auth/user-not-found" ? dispatch({ type: NO_USER }) : dispatch({ type: SIGNIN_ERROR })

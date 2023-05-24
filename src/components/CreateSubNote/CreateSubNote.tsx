@@ -25,11 +25,11 @@ const navigate=useNavigate();
       <h1>Add a Sub Note</h1>
       <form action="" className={styles.formWrapper} onSubmit={handleSubmit}>
         <div className={styles.labelInput}>
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">Sub Note Title</label>
           <input type="text" name="title" id="title" onChange={handleChange} autoComplete='off' />
         </div>
         <div className={styles.labelInput}>
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">Sub Note Description</label>
           <input type="text" name="description" id="description" onChange={handleChange} autoComplete='off' />
         </div>
         <Button type="submit" text="Sub Note" styles={styles.button} />

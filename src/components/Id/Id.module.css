@@ -1,4 +1,11 @@
-.id{
+.id {
     display: flex;
     align-items: center;
+    color: wheat;
+}
+
+.id h4 {
+    background-color: purple;
+    border-radius: 10px;
+    padding: 2px 10px;
 }

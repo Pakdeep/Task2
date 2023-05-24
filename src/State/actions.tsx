@@ -10,3 +10,4 @@ export const ADD_SUBNOTE = 'ADD_SUBNOTE';
 export const GET_USER = 'GET_USER';
 export const FETCH_NOTES = 'FETCH_NOTES';
 export const NO_USER = 'NO_USER';
+export const USER_EXIST = 'USER_EXIST';

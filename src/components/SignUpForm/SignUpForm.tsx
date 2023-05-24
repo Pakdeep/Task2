@@ -5,14 +5,14 @@ import { useNavigate, Link } from "react-router-dom";
 import Button from '../Button';
 import { auth, db } from "../../Firebase/firebaseConfig"
 import { useDispatch, useSelector } from "react-redux";
-import { SIGN_UP,SIGNUP_ERROR } from "../../State/actions";
+import { SIGN_UP, SIGNUP_ERROR, USER_EXIST } from "../../State/actions";
 import { doc, setDoc } from "firebase/firestore";
 
 const SignUpForm = () => {
 
 
-const notes=useSelector((state:any)=>state.notes)
-const dispatch=useDispatch();
+  const notes = useSelector((state: any) => state.notes)
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [details, setDetails] = useState({
     name: "",
@@ -30,15 +30,14 @@ const dispatch=useDispatch();
       await updateProfile(res.user, {
         displayName: details.name,
       })
-      await setDoc(doc(db, "notes", res.user.uid), {
-        name:res.user.displayName,
-        notes:notes
-      });       
-      dispatch({type:SIGN_UP,payload:res.user})
-      navigate("/");      
-    } catch (err) {   
-      console.log(err)   
-      dispatch({type:SIGNUP_ERROR})
+      await setDoc(doc(db, "users", res.user.uid), {
+        name: res.user.displayName,
+        notes
+      });
+      dispatch({ type: SIGN_UP, payload: res.user })
+      navigate("/");
+    } catch (err: any) {
+      err.code === "auth/email-already-in-use" ? dispatch({ type: USER_EXIST }) : dispatch({ type: SIGNUP_ERROR })
     }
   }
 

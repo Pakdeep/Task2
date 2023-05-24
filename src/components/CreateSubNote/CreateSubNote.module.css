@@ -1,44 +1,55 @@
-.createSubNote{
-    width: 40%;
-    height: 74vh;
+.createSubNote {
     display: flex;
-    justify-content: center;
+    width: 60%;
+    height: 72vh;
     align-items: center;
     flex-direction: column;
     gap: 20px;
 }
-.formWrapper{
+
+.formWrapper {
+    width: 90%;
+    border: 1px solid purple;
+
+    height: 230px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: antiquewhite;    
     padding: 0 10px;
-    height: 50%;
-    width: 90%;
     border-radius: 20px;
+    background-color: antiquewhite;
 }
+
 .labelInput {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 10px;
+    height: 40%;
     width: 80%;
-}
-.labelInput input{
-    width: 80%;
-    height: 30px;
-    outline: none;
-    border: none;
-    padding-left: 5px;
-    background: transparent;
-    border-bottom: 1px solid black;
-}
-.labelInput label{
-    align-self: flex-start;
-    margin-left: 20px;
 }
 
+.labelInput input {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    font-size: 20px;
+    border: none;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding-left: 5px;
+    background: transparent;
+}
+
+.labelInput input:focus {
+    outline: 1px solid black;
+}
+
+.labelInput label {
+    font-weight: bold;
+    font-size: 22px;
+}
 
 .button {
     align-self: flex-end;
@@ -50,4 +61,4 @@
     border-radius: 20px;
     cursor: pointer;
     border: none;
-  }
+}

@@ -1,14 +1,14 @@
 import React from 'react'
 import styles from "./subnote.module.css"
-interface noteType{
-  id:number,
-title:string
+import { Link } from 'react-router-dom'
+interface noteType {
+  id: number,
+  title: string
 }
-const Subnote = ({title}:noteType) => {
-  
+const Subnote = ({ title }: noteType) => { 
   return (
     <div className={styles.subnote}>
-    <p>{title}</p>
+      <Link to="/subnote" state={{ from: {title} }}><p>{title}</p></Link>
     </div>
   )
 }
